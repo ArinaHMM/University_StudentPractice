@@ -1,0 +1,65 @@
+﻿<Page x:Class="University_StudentPractice.Pages.TeacherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University_StudentPractice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800" Background="Beige"
+      Title="TeacherPage">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Список экзаменов:</TextBlock>
+            <!--<DataGrid Height="300" Name="ExamsListBox" Margin="10" >
+                <DataGrid.Columns >-->
+
+                    <!--<TextBlock x:Name="id_exam" Header="Номер экзамена" Width="130" Binding="{ Binding id_exam }" />
+                    <TextBlock x:Name="DateOfExam" Header="Дата экзамена" Width="130" Binding="{ Binding DateOfExam }" />
+                    <TextBlock x:Name="RegNumber" Header="Номер студента" Width="130" Binding="{ Binding RegNumber }" />
+                    <TextBlock x:Name="Nunber" Header="Номер аудитории" Width="140" Binding="{ Binding Nunber }" />
+                    <TextBlock x:Name="Auditorium" Header="Номер аудитории" Width="130" Binding="{ Binding Auditorium }" />
+                    <DataGridTextColumn x:Name="Assessment" Header="Оценка"  Width="130" Binding="{ Binding Assessment }" />-->
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Номер экзамена" </TextBlock>
+                <TextBox x:Name="id_exam" Text="{ Binding id_exam }"> </TextBox></StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Дата экзамена""</TextBlock>
+                <TextBox x:Name="DateOfExam" Text="{ Binding DateOfExam }"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Номер дисциплины""</TextBlock>
+                <TextBox x:Name="idcode" Text="{ Binding idcode }"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Номер студента"</TextBlock>
+                <TextBox x:Name="RegNumber" Text="{  Binding RegNumbe }"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Номер препод"</TextBlock>
+                <TextBox x:Name="Nunber" Text="{ Binding Nunber}"></TextBox>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Номер аудитории"</TextBlock>
+                <TextBox x:Name="Auditorium" Text="{ Binding Auditorium }"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" >
+                <TextBlock>"Оценка"</TextBlock>
+                <TextBox x:Name="Assessment" Text="{ Binding Assessment }"></TextBox>
+            </StackPanel>
+            <!--</DataGrid.Columns>
+            </DataGrid>-->
+
+            <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Добавление студента в экзамен:</TextBlock>
+            <ComboBox Name="StudentsComboBox" Text="{Binding FirstName}" DisplayMemberPath="FullName" Margin="10"/>
+            <!--SelectionChanged="StudentsComboBox_SelectionChanged"-->
+            <Button Content="Добавить студента"  Margin="10" />
+
+            <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Оценивание студента за экзамен:</TextBlock>
+            <ComboBox Name="StudentsForGradingComboBox" DisplayMemberPath="FullName" Margin="10" />
+            <TextBox Name="GradeTextBox" Text="Введите оценку" Margin="10" />
+            <Button Content="Оценить студента" Margin="10" />
+        </StackPanel>
+    </Grid>
+</Page>
