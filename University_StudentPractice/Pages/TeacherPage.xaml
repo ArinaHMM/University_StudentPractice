@@ -11,45 +11,19 @@
     <Grid>
         <StackPanel>
             <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Список экзаменов:</TextBlock>
-            <!--<DataGrid Height="300" Name="ExamsListBox" Margin="10" >
-                <DataGrid.Columns >-->
+            <DataGrid AutoGenerateColumns="False" Height="300" Name="ExamsDataGrid" Margin="10" >
+                <DataGrid.Columns >
 
-                    <!--<TextBlock x:Name="id_exam" Header="Номер экзамена" Width="130" Binding="{ Binding id_exam }" />
-                    <TextBlock x:Name="DateOfExam" Header="Дата экзамена" Width="130" Binding="{ Binding DateOfExam }" />
-                    <TextBlock x:Name="RegNumber" Header="Номер студента" Width="130" Binding="{ Binding RegNumber }" />
-                    <TextBlock x:Name="Nunber" Header="Номер аудитории" Width="140" Binding="{ Binding Nunber }" />
-                    <TextBlock x:Name="Auditorium" Header="Номер аудитории" Width="130" Binding="{ Binding Auditorium }" />
-                    <DataGridTextColumn x:Name="Assessment" Header="Оценка"  Width="130" Binding="{ Binding Assessment }" />-->
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Номер экзамена" </TextBlock>
-                <TextBox x:Name="id_exam" Text="{ Binding id_exam }"> </TextBox></StackPanel>
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Дата экзамена""</TextBlock>
-                <TextBox x:Name="DateOfExam" Text="{ Binding DateOfExam }"></TextBox>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Номер дисциплины""</TextBlock>
-                <TextBox x:Name="idcode" Text="{ Binding idcode }"></TextBox>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Номер студента"</TextBlock>
-                <TextBox x:Name="RegNumber" Text="{  Binding RegNumbe }"></TextBox>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Номер препод"</TextBlock>
-                <TextBox x:Name="Nunber" Text="{ Binding Nunber}"></TextBox>
-            </StackPanel>
-
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Номер аудитории"</TextBlock>
-                <TextBox x:Name="Auditorium" Text="{ Binding Auditorium }"></TextBox>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock>"Оценка"</TextBlock>
-                <TextBox x:Name="Assessment" Text="{ Binding Assessment }"></TextBox>
-            </StackPanel>
-            <!--</DataGrid.Columns>
-            </DataGrid>-->
+                    <DataGridTextColumn x:Name="id_exam" Header="Наименование дисциплины" Width="130" Binding="{ Binding Discipline.Name }" />
+                    <DataGridTextColumn x:Name="DateOfExam" Header="Дата экзамена" Width="130" Binding="{ Binding DateOfExam }" />
+                    
+                    <DataGridTextColumn x:Name="RegNumber" Header="Фамилия студента" Width="130" Binding="{ Binding Student.FirstName }" />
+                    <DataGridTextColumn x:Name="Nunber" Header="Фамилия препода" Width="140" Binding="{ Binding Employee.LastName }" />
+                    <DataGridTextColumn x:Name="Auditorium" Header="Номер аудитории" Width="130" Binding="{ Binding Auditorium }" />
+                    <DataGridTextColumn x:Name="Assessment" Header="Оценка"  Width="130" Binding="{ Binding Assessment }" />
+                     </DataGrid.Columns>
+                     </DataGrid>
+          
 
             <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Добавление студента в экзамен:</TextBlock>
             <ComboBox Name="StudentsComboBox" Text="{Binding FirstName}" DisplayMemberPath="FullName" Margin="10"/>

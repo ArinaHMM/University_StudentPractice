@@ -23,18 +23,14 @@ namespace University_StudentPractice.Pages
     {
         private Student student;
         private Exam exam;
-        private Exam_Student exam_student;
         public TeacherPage()
         {
             InitializeComponent();
-            DataContext = this;
-            id_exam.Text = exam.id_exam.ToString();
-            DateOfExam.Text = exam.DateOfExam.ToString();
-            idcode.Text = exam.idcode.ToString();
-            RegNumber.Text = exam.RegNumber.ToString();
-            Nunber.Text = exam.Nunber.ToString();
-            Auditorium.Text = exam.Auditorium.ToString();
-            Assessment.Text = exam.Assessment.ToString();
+            ExamsDataGrid.ItemsSource = App.db.Exam.ToList();
+            ExamsDataGrid.DataContext = App.db.Exam.ToList();
+            StudentsComboBox.ItemsSource = App.db.Student.ToList();
+            StudentsComboBox.DisplayMemberPath = "Fullname";
+          
 
             //StudentsComboBox = 
 

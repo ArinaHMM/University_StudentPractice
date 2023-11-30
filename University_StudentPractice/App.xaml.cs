@@ -17,7 +17,6 @@ namespace University_StudentPractice
     public partial class App : System.Windows.Application
     {
         public static PracticeClasses222103Entities db = new PracticeClasses222103Entities();
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Exam> Exams { get; set; }
+
     }
 }
