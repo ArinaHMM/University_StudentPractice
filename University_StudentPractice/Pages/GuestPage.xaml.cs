@@ -13,22 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using University_StudentPractice.Components;
-using University_StudentPractice.Pages;
 
-namespace University_StudentPractice
+namespace University_StudentPractice.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для GuestPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GuestPage : Page
     {
-        public MainWindow()
+        public GuestPage()
         {
             InitializeComponent();
-            
-            MainFrame.Navigate(new Authorizate());
+            DisciplineDataGrid.ItemsSource = App.db.Exam.ToList();
+            DisciplineDataGrid.DataContext = App.db.Exam.ToList();
+
         }
+       
     }
 }
-
-       

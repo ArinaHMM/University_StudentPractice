@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:University_StudentPractice.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="800" Background="Beige"
+      d:DesignHeight="750" d:DesignWidth="800" Background="Beige"
       Title="TeacherPage">
 
     <Grid>
@@ -26,24 +26,36 @@
           
 
             <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Добавление студента в экзамен:</TextBlock>
-            <ComboBox Name="StudentsComboBox" Text="{Binding FirstName}" DisplayMemberPath="FullName" Margin="10"/>
+            <!--<TextBlock HorizontalAlignment="Center" Text="Ученик:"></TextBlock>-->
+            <ComboBox  Name="StudentsComboBox" Text="{Binding FirstName}" DisplayMemberPath="FirstName" Margin="10"/>
             
+            <ComboBox Name="DiscComboBox" Text="{Binding Discipline.Name}" DisplayMemberPath="Name" Margin="10"/>
+
             <!--SelectionChanged="StudentsComboBox_SelectionChanged"-->
-            <Button Content="Добавить студента"  Margin="10" />
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="5"> Аудитория</TextBlock>
+                <TextBox x:Name="AudithoriumTb" Width="60" ></TextBox>
+            
+            <!--<ComboBox x:Name="StudComboBox" Width="79"></ComboBox>-->
+            <TextBlock Margin="5"> Фамилия препод-ля:</TextBlock>
+                <ComboBox x:Name="TeachComboBox" Text="{Binding Employee.LastName}" Width="79"></ComboBox>
+                <TextBlock Margin="5"> Дата экзамена</TextBlock>
+                <DatePicker Name="DateOfExamDp"></DatePicker>
+            </StackPanel>
+            <Button Content="Добавить студента"  Margin="10" Name="AddStudentToExam" Click="AddStudentToExam_Click" />
 
             <TextBlock FontWeight="Bold" FontSize="16" Margin="10">Оценивание студента за экзамен:</TextBlock>
-            <StackPanel Orientation="Horizontal" >
-            <TextBlock Margin="5" > Дисциплина </TextBlock>
-            <TextBox  Width="60"></TextBox>
-                <TextBlock Margin="5"> Аудитория</TextBlock>
-                <TextBox Width="60" ></TextBox>
-                <TextBlock Margin="5"> Фамилия студента:</TextBlock>
-                <ComboBox x:Name="StudComboBox" Width="79"></ComboBox>
-                <TextBlock Margin="5"> Фамилия препод-ля:</TextBlock>
-                <ComboBox x:Name="TeachComboBox" Width="79"></ComboBox>
-           </StackPanel>
-            <TextBox Name="GradeTextBox" Width="95" HorizontalAlignment="Center" Text="Введите оценку" Margin="10" />
-            <Button Content="Оценить студента" Margin="10" />
+              <!--<TextBlock Margin="5" > Дисциплина </TextBlock>
+            <TextBox  Width="60"></TextBox>-->
+
+            <ComboBox Name="GradeCB" Width="95" HorizontalAlignment="Center" Text="Введите оценку" Margin="10" >
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>4 </ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+
+            </ComboBox>
+            <Button x:Name="GradeBtn" Content="Оценить студента" Margin="10" Click="GradeBtn_Click" />
         </StackPanel>
     </Grid>
 </Page>

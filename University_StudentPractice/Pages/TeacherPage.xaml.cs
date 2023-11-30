@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,73 +31,93 @@ namespace University_StudentPractice.Pages
             ExamsDataGrid.DataContext = App.db.Exam.ToList();
             StudentsComboBox.ItemsSource = App.db.Student.ToList();
             StudentsComboBox.DisplayMemberPath = "FirstName";
-          
+            DiscComboBox.ItemsSource = App.db.Discipline.ToList();
+            DiscComboBox.DisplayMemberPath = "Name";
+            TeachComboBox.ItemsSource = App.db.Employee.ToList();
+            TeachComboBox.DisplayMemberPath = "LastName";
+            App.COuntOfExams = App.db.Exam.Count();
 
-            //StudentsComboBox = 
 
         }
-        public void LoadedData()
+
+        StringBuilder Validator()
         {
-            
+            StringBuilder stringBuilder = new StringBuilder();
+            if (StudentsComboBox.SelectedIndex == -1)
+                stringBuilder.AppendLine("Не выбран студент");
+            if (DiscComboBox.SelectedIndex == -1)
+                stringBuilder.AppendLine("Не выбрана дисциплина");
+            if (DateOfExamDp.SelectedDate == null)
+                stringBuilder.AppendLine("Не выбрана дата");
+            if (AudithoriumTb is null)
+                stringBuilder.AppendLine("Не выбрана аудитория");
+            return stringBuilder;
+        }
+
+        private void AddStudentToExam_Click(object sender, RoutedEventArgs e)
+        {
+            if (Validator().Length == 0)
+            {
+
+                App.db.Exam.Add(new Exam()
+                {
+                    id_exam = App.db.Exam.Count() + 1,
+                    DateOfExam = DateOfExamDp.SelectedDate,
+                    idcode = ((DiscComboBox.SelectedItem) as Discipline).id,
+                    Assessment = null,
+                    RegNumber = (StudentsComboBox.SelectedItem as Student).RegNumber,
+                    Nunber = ((TeachComboBox.SelectedItem) as Employee).id,
+                    Auditorium = AudithoriumTb.Text
+                });
+                App.db.SaveChanges();
+                MessageBox.Show("Успешно");
+                App.COuntOfExams += 1;
+                Refresh();
+            }
+            else
+                MessageBox.Show(Validator().ToString());
+        }
+        void Refresh()
+        {
+            ExamsDataGrid.ItemsSource = App.db.Exam.ToList();
+            ExamsDataGrid.DataContext = App.db.Exam.ToList();
+        }
+
+        private void GradeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            {
+
+                Exam ThatOneExam = ExamsDataGrid.SelectedItem as Exam;
+                if (GradeCB.SelectedItem == null)
+                {
+                    MessageBox.Show("Не выбрана оценка");
+                }
+                else if (ExamsDataGrid.SelectedItem == null)
+                {
+                    MessageBox.Show("Не выбран экзамен");
+                }
+                else if (ThatOneExam.Assessment != null)
+                {
+                    MessageBox.Show("Оценка уже выставлена");
+                }
+
+                else
+                {
+                    int grade;
+                    switch (GradeCB.SelectedIndex)
+                    {
+                        case 0: grade = 2; break;
+                        case 1: grade = 3; break;
+                        case 2: grade = 4; break;
+                        case 3: grade = 5; break;
+                        default: grade = 0; break;
+                    }
+                    App.db.Exam.Find(ThatOneExam.id_exam).Assessment = grade;
+                    App.db.SaveChanges();
+                    MessageBox.Show("Оценка выставлена");
+                    Refresh();
+                }
+            }
         }
     }
 }
-
-//        private void AddStudentToExam_Click(object sender, RoutedEventArgs e)
-//        {
-//            Student selectedStudent = (Student)StudentsComboBox.SelectedItem;
-//            Exam selectedExam = (Exam)ExamsListBox.SelectedItem;
-
-//            if (selectedStudent != null && selectedExam != null)
-//            {
-//                // Ваш код для добавления студента к экзамену
-//                App.db.Exam_Student.Add(new Exam_Student { id_exam = selectedExam.id_exam, id_student = selectedStudent.RegNumber });
-//                App.db.SaveChanges();
-
-//                // После этого обновите список экзаменов, чтобы отобразить изменения
-
-//            }
-//            else
-//            {
-//                MessageBox.Show("Выберите студента и экзамен для добавления");
-//            }
-//        }
-
-//       private void GradeStudent_Click(object sender, RoutedEventArgs e)
-//        {
-//            Student selectedStudent = (Student)StudentsForGradingComboBox.SelectedItem;
-//            Exam selectedExam = (Exam)ExamsListBox.SelectedItem;
-//            string grade = GradeTextBox.Text;
-
-//            if (selectedStudent != null && selectedExam != null && !string.IsNullOrEmpty(grade))
-//            {
-//                // Ваш код для оценивания студента за экзамен
-//                var examStudent = App.db.Exam_Student.FirstOrDefault(es => es.id_exam == selectedExam.id_exam && es.id_student == selectedStudent.RegNumber);
-
-//                if (examStudent != null)
-//                {
-//                    // Оценивание студента за экзамен
-//                    examStudent.Assessment = grade;
-//                    examStudent.Student = selectedStudent;
-//                    App.db.SaveChanges();
-//                }
-
-//                // После этого обновите список экзаменов, чтобы отобразить изменения
-
-//            }
-//            else
-//            {
-//                MessageBox.Show("Выберите студента, экзамен и введите оценку");
-//            }
-//        }
-
-//        private void ExamsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-//        {
-//            List<Exam> exams = App.db.Exam.ToList();
-//        }
-
-       
-//    }
-//}
-
-        

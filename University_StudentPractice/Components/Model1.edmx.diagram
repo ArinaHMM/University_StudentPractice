@@ -33,7 +33,7 @@
         <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Student_Exam" ManuallyRouted="false" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Student_Student" ManuallyRouted="false" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Student_Speciality" ManuallyRouted="false" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

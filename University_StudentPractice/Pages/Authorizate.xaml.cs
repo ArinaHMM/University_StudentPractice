@@ -76,9 +76,7 @@ namespace University_StudentPractice.Pages
                 case "Инженер":
                     OpenEngineerPage();
                     break;
-                case "Гость":
-                    OpenGuestPage();
-                    break;
+               
             }
         }
 
@@ -106,9 +104,20 @@ namespace University_StudentPractice.Pages
         private void OpenGuestPage()
         {
 
-           // MainFrame.Navigate(new TeacherPage());
+            // MainFrame.Navigate(new TeacherPage());
 
 
         }
+
+        private void GuestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                NavigationService.Navigate(new GuestPage());
+            }
+
+        }
+
+
     }
 }
+

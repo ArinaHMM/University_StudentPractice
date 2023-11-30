@@ -15,11 +15,11 @@
                 <ComboBoxItem>Учитель</ComboBoxItem>
                 <ComboBoxItem>Заведующий кафедры</ComboBoxItem>
                 <ComboBoxItem>Инженер</ComboBoxItem>
-                <ComboBoxItem>Гость</ComboBoxItem>
             </ComboBox>
             <PasswordBox x:Name="PasswordAuth" Width="70"></PasswordBox>
             <TextBlock HorizontalAlignment="Center" FontWeight="Bold">Введите пароль</TextBlock>
-            <Button Margin=" 20" Name="EnterBtn" Click="EnterBtn_Click">Войти</Button>
+            <Button Margin="0 0 0 6" Name="EnterBtn" Click="EnterBtn_Click">Войти</Button>
+            <Button Margin="0 0 0 0" Name="GuestBtn" Click="GuestBtn_Click" >Войти как гость</Button>
         </StackPanel>
     </StackPanel>
 </Page>
