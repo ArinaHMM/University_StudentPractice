@@ -29,7 +29,7 @@ namespace University_StudentPractice.Pages
             ExamsDataGrid.ItemsSource = App.db.Exam.ToList();
             ExamsDataGrid.DataContext = App.db.Exam.ToList();
             StudentsComboBox.ItemsSource = App.db.Student.ToList();
-            StudentsComboBox.DisplayMemberPath = "Fullname";
+            StudentsComboBox.DisplayMemberPath = "FirstName";
           
 
             //StudentsComboBox = 

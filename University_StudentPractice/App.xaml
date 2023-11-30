@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:University_StudentPractice"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock" >
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
