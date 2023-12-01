@@ -18,6 +18,7 @@ namespace University_StudentPractice.Components
         public Student()
         {
             this.Exam = new HashSet<Exam>();
+            this.Exam_Student = new HashSet<Exam_Student>();
         }
     
         public int RegNumber { get; set; }
@@ -26,6 +27,8 @@ namespace University_StudentPractice.Components
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exam_Student> Exam_Student { get; set; }
         public virtual Speciality Speciality { get; set; }
     }
 }

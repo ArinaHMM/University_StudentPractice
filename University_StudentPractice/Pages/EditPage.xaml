@@ -1,0 +1,32 @@
+﻿<Page x:Class="University_StudentPractice.Pages.EditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University_StudentPractice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="EditPage">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"> 
+            <TextBlock>Код:</TextBlock>
+            <TextBlock Name="IdTb" Width="200" Text="{Binding id}" IsEnabled="False" />
+            <TextBlock>Шифр:</TextBlock>
+            <ComboBox Name="CodeCb" Width="200" DisplayMemberPath="Name" SelectedItem="{Binding Cathedra}" IsEnabled="True" />
+
+            <TextBlock>Фамилия:</TextBlock>
+            <TextBox Name="LastNameTb" Width="200" Text="{Binding LastName}" />
+
+            <TextBlock>Должность:</TextBlock>
+            <ComboBox Width="200" Name="PositionCb" SelectedItem="{Binding PositionT}" DisplayMemberPath="Name" />
+
+            <TextBlock>Зарплата:</TextBlock>
+            <TextBox x:Name="SalaryTb" Width="200" Text="{Binding Salary}" />
+
+            <TextBlock>Начальник:</TextBlock>
+            <ComboBox Width="200" Margin=" 0 0 0 25" Name="ChiefCb" SelectedItem="{Binding Employee2}" DisplayMemberPath="LastName" />
+
+            <Button Width="200" Content="Сохранить изменения" Name="SaveChangesButton" Click="SaveChangesButton_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

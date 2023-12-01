@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:University_StudentPractice"
         mc:Ignorable="d"
-        Title="Авторизация" Height="270" Width="400">
+        Title="Авторизация" MinHeight="450" MinWidth="800">
     <Grid>
         <Frame Name="MainFrame"></Frame>
     </Grid>
