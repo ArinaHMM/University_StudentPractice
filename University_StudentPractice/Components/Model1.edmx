@@ -21,13 +21,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Faculty" Type="nchar" MaxLength="2" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6013: Первичный ключ в таблице или представлении "PracticeClasses222103.dbo.ContinentLalala" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
-        <EntityType Name="ContinentLalala">
-          <Property Name="CName" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaxArea" Type="int" />
-          <Property Name="MinArea" Type="int" />
-        </EntityType>-->
         <EntityType Name="Discipline">
           <Key>
             <PropertyRef Name="id" />
@@ -68,15 +61,6 @@
           <Property Name="Auditorium" Type="nvarchar" MaxLength="5" />
           <Property Name="Assessment" Type="int" />
         </EntityType>
-        <EntityType Name="Exam_Student">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="id_exam" Type="int" />
-          <Property Name="id_student" Type="int" />
-          <Property Name="Assessment" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Faculty">
           <Key>
             <PropertyRef Name="Abbreviation" />
@@ -91,6 +75,13 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="Seniority" Type="int" />
+        </EntityType>
+        <EntityType Name="ManagementBurito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="NumberOfManagement" Type="int" />
         </EntityType>
         <EntityType Name="Speciality">
           <Key>
@@ -187,6 +178,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee1" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="Chief" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Engineer_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Engineer" Type="Self.Engineer" Multiplicity="*" />
@@ -232,30 +235,6 @@
             </Principal>
             <Dependent Role="Exam">
               <PropertyRef Name="RegNumber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Exam_Student_Exam">
-          <End Role="Exam" Type="Self.Exam" Multiplicity="0..1" />
-          <End Role="Exam_Student" Type="Self.Exam_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Exam">
-              <PropertyRef Name="id_exam" />
-            </Principal>
-            <Dependent Role="Exam_Student">
-              <PropertyRef Name="id_exam" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Exam_Student_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
-          <End Role="Exam_Student" Type="Self.Exam_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="RegNumber" />
-            </Principal>
-            <Dependent Role="Exam_Student">
-              <PropertyRef Name="id_student" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -314,9 +293,9 @@
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Engineer" EntityType="Self.Engineer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Exam_Student" EntityType="Self.Exam_Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HeadOfTheDepartment" EntityType="Self.HeadOfTheDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManagementBurito" EntityType="Self.ManagementBurito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -341,6 +320,10 @@
             <End Role="Cathedra" EntitySet="Cathedra" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employee_Employee" Association="Self.FK_Employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee1" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Engineer_Employee" Association="Self.FK_Engineer_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Engineer" EntitySet="Engineer" />
@@ -356,14 +339,6 @@
           <AssociationSet Name="FK_Exam_Student" Association="Self.FK_Exam_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Exam" EntitySet="Exam" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Exam_Student_Exam" Association="Self.FK_Exam_Student_Exam">
-            <End Role="Exam" EntitySet="Exam" />
-            <End Role="Exam_Student" EntitySet="Exam_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Exam_Student_Student" Association="Self.FK_Exam_Student_Student">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Exam_Student" EntitySet="Exam_Student" />
           </AssociationSet>
           <AssociationSet Name="FK_HeadOfTheDepartment_Employee" Association="Self.FK_HeadOfTheDepartment_Employee">
             <End Role="Employee" EntitySet="Employee" />
@@ -435,6 +410,8 @@
           <NavigationProperty Name="Exam" Relationship="Self.FK_Exam_Employee" FromRole="Employee" ToRole="Exam" />
           <NavigationProperty Name="HeadOfTheDepartment" Relationship="Self.FK_HeadOfTheDepartment_Employee" FromRole="Employee" ToRole="HeadOfTheDepartment" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Employee" FromRole="Employee" ToRole="Teacher" />
+          <NavigationProperty Name="Employee1" Relationship="PracticeClasses222103Model.FK_Employee_Employee" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee2" Relationship="PracticeClasses222103Model.FK_Employee_Employee" FromRole="Employee1" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Engineer">
           <Key>
@@ -459,18 +436,6 @@
           <NavigationProperty Name="Discipline" Relationship="Self.FK_Exam_Discipline" FromRole="Exam" ToRole="Discipline" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Exam_Employee" FromRole="Exam" ToRole="Employee" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Exam_Student" FromRole="Exam" ToRole="Student" />
-          <NavigationProperty Name="Exam_Student" Relationship="Self.FK_Exam_Student_Exam" FromRole="Exam" ToRole="Exam_Student" />
-        </EntityType>
-        <EntityType Name="Exam_Student">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="id_exam" Type="Int32" />
-          <Property Name="id_student" Type="Int32" />
-          <Property Name="Assessment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Exam" Relationship="Self.FK_Exam_Student_Exam" FromRole="Exam_Student" ToRole="Exam" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Exam_Student_Student" FromRole="Exam_Student" ToRole="Student" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -488,6 +453,13 @@
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="Seniority" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_HeadOfTheDepartment_Employee" FromRole="HeadOfTheDepartment" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ManagementBurito">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfManagement" Type="Int32" />
         </EntityType>
         <EntityType Name="Speciality">
           <Key>
@@ -508,7 +480,6 @@
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Exam" Relationship="Self.FK_Exam_Student" FromRole="Student" ToRole="Exam" />
-          <NavigationProperty Name="Exam_Student" Relationship="Self.FK_Exam_Student_Student" FromRole="Student" ToRole="Exam_Student" />
           <NavigationProperty Name="Speciality" Relationship="Self.FK_Student_Speciality" FromRole="Student" ToRole="Speciality" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -675,30 +646,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Exam_Student_Exam">
-          <End Role="Exam" Type="Self.Exam" Multiplicity="0..1" />
-          <End Role="Exam_Student" Type="Self.Exam_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Exam">
-              <PropertyRef Name="id_exam" />
-            </Principal>
-            <Dependent Role="Exam_Student">
-              <PropertyRef Name="id_exam" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Exam_Student_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
-          <End Role="Exam_Student" Type="Self.Exam_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="RegNumber" />
-            </Principal>
-            <Dependent Role="Exam_Student">
-              <PropertyRef Name="id_student" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Student_Speciality">
           <End Role="Speciality" Type="Self.Speciality" Multiplicity="0..1" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
@@ -711,16 +658,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PracticeClasses222103Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PracticeClasses222103Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Application" EntityType="Self.Application" />
           <EntitySet Name="Cathedra" EntityType="Self.Cathedra" />
           <EntitySet Name="Discipline" EntityType="Self.Discipline" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="Engineer" EntityType="Self.Engineer" />
           <EntitySet Name="Exam" EntityType="Self.Exam" />
-          <EntitySet Name="Exam_Student" EntityType="Self.Exam_Student" />
           <EntitySet Name="Faculty" EntityType="Self.Faculty" />
           <EntitySet Name="HeadOfTheDepartment" EntityType="Self.HeadOfTheDepartment" />
+          <EntitySet Name="ManagementBurito" EntityType="Self.ManagementBurito" />
           <EntitySet Name="Speciality" EntityType="Self.Speciality" />
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -773,25 +720,33 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="Exam" EntitySet="Exam" />
           </AssociationSet>
-          <AssociationSet Name="FK_Exam_Student_Exam" Association="Self.FK_Exam_Student_Exam">
-            <End Role="Exam" EntitySet="Exam" />
-            <End Role="Exam_Student" EntitySet="Exam_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Exam_Student_Student" Association="Self.FK_Exam_Student_Student">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Exam_Student" EntitySet="Exam_Student" />
-          </AssociationSet>
           <AssociationSet Name="FK_Student_Speciality" Association="Self.FK_Student_Speciality">
             <End Role="Speciality" EntitySet="Speciality" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
-          </EntityContainer>
-        </Schema>
+          <AssociationSet Name="FK_Employee_Employee" Association="PracticeClasses222103Model.FK_Employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee1" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Employee_Employee">
+          <End Type="PracticeClasses222103Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="PracticeClasses222103Model.Employee" Role="Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="Chief" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PracticeClasses222103ModelContainer" CdmEntityContainer="PracticeClasses222103Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PracticeClasses222103ModelContainer" CdmEntityContainer="PracticeClasses222103Entities1">
           <EntitySetMapping Name="Application">
             <EntityTypeMapping TypeName="PracticeClasses222103Model.Application">
               <MappingFragment StoreEntitySet="Application">
@@ -854,16 +809,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Exam_Student">
-            <EntityTypeMapping TypeName="PracticeClasses222103Model.Exam_Student">
-              <MappingFragment StoreEntitySet="Exam_Student">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_exam" ColumnName="id_exam" />
-                <ScalarProperty Name="id_student" ColumnName="id_student" />
-                <ScalarProperty Name="Assessment" ColumnName="Assessment" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Faculty">
             <EntityTypeMapping TypeName="PracticeClasses222103Model.Faculty">
               <MappingFragment StoreEntitySet="Faculty">
@@ -878,6 +823,14 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Seniority" ColumnName="Seniority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagementBurito">
+            <EntityTypeMapping TypeName="PracticeClasses222103Model.ManagementBurito">
+              <MappingFragment StoreEntitySet="ManagementBurito">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NumberOfManagement" ColumnName="NumberOfManagement" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -920,7 +873,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

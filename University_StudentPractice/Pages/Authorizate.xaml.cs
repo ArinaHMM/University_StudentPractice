@@ -96,8 +96,8 @@ namespace University_StudentPractice.Pages
 
         private void OpenEngineerPage()
         {
-
-            //MainFrame.Navigate(new TeacherPage());
+            EngineerPage engineerPage = new EngineerPage();
+            NavigationService.Navigate(engineerPage);
 
         }
 

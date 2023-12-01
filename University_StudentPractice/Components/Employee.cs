@@ -21,6 +21,7 @@ namespace University_StudentPractice.Components
             this.Exam = new HashSet<Exam>();
             this.HeadOfTheDepartment = new HashSet<HeadOfTheDepartment>();
             this.Teacher = new HashSet<Teacher>();
+            this.Employee1 = new HashSet<Employee>();
         }
     
         public int id { get; set; }
@@ -39,5 +40,8 @@ namespace University_StudentPractice.Components
         public virtual ICollection<HeadOfTheDepartment> HeadOfTheDepartment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teacher> Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee1 { get; set; }
+        public virtual Employee Employee2 { get; set; }
     }
 }

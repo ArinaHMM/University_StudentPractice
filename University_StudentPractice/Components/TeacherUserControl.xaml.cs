@@ -22,7 +22,6 @@ namespace University_StudentPractice.Components
     {
         private Student student;
         private Exam exam;
-        private Exam_Student exam_student;
         public TeacherUserControl()
         {
             InitializeComponent();

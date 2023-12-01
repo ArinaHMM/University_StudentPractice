@@ -106,10 +106,10 @@ namespace University_StudentPractice.Pages
                     int grade;
                     switch (GradeCB.SelectedIndex)
                     {
-                        case 0: grade = 2; break;
-                        case 1: grade = 3; break;
-                        case 2: grade = 4; break;
-                        case 3: grade = 5; break;
+                        case 0: grade = 5; break;
+                        case 1: grade = 4; break;
+                        case 2: grade = 3; break;
+                        case 3: grade = 2; break;
                         default: grade = 0; break;
                     }
                     App.db.Exam.Find(ThatOneExam.id_exam).Assessment = grade;

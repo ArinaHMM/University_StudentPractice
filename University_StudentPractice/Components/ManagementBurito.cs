@@ -12,14 +12,9 @@ namespace University_StudentPractice.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class Exam_Student
+    public partial class ManagementBurito
     {
         public int id { get; set; }
-        public Nullable<int> id_exam { get; set; }
-        public Nullable<int> id_student { get; set; }
-        public string Assessment { get; set; }
-    
-        public virtual Exam Exam { get; set; }
-        public virtual Student Student { get; set; }
+        public Nullable<int> NumberOfManagement { get; set; }
     }
 }
