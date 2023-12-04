@@ -31,14 +31,16 @@ namespace University_StudentPractice.Pages
             EmployeesDataGrid.ItemsSource = App.db.Employee.ToList();
             EmployeesDataGrid.DataContext = App.db.Employee.ToList();
             var PoositionEmployees = App.db.Employee.Where(x => x.Position != "зав. кафедрой").ToList();
+            var chiefEmployees = App.db.Employee.Where(e => e.Position == "зав. кафедрой").ToList();
+            App.CountOfEmployeers = App.db.Employee.Count();
 /*            PositionCb.ItemsSource = PoositionEmployees;
             PositionCb.DisplayMemberPath = "Position";*/
-            var chiefEmployees = App.db.Employee.Where(e => e.Position == "зав. кафедрой").ToList();
+           
             //ChiefCb.ItemsSource = chiefEmployees;
             //ChiefCb.DisplayMemberPath = "LastName";
             //CodsCb.ItemsSource = App.db.Employee.ToList();
             //CodsCb.DisplayMemberPath = "Code";
-            App.CountOfEmployeers = App.db.Employee.Count();
+            
 
 
 

@@ -78,6 +78,9 @@
     <Compile Include="Components\Cathedra.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\CountriesBurito.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Discipline.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -90,11 +93,6 @@
     <Compile Include="Components\Exam.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\Exams.cs" />
-    <Compile Include="Components\Exam_Student.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Exam_students.cs" />
     <Compile Include="Components\Faculty.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -126,7 +124,6 @@
     <Compile Include="Components\Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\Students.cs" />
     <Compile Include="Components\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -138,6 +135,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Authorizate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditDepartmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +154,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HeadOfTheDepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +167,9 @@
     <Compile Include="Pages\Authorizate.xaml.cs">
       <DependentUpon>Authorizate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditDepartmentPage.xaml.cs">
+      <DependentUpon>EditDepartmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
     </Compile>
@@ -170,6 +178,9 @@
     </Compile>
     <Compile Include="Pages\GuestPage.xaml.cs">
       <DependentUpon>GuestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HeadOfTheDepartmentPage.xaml.cs">
+      <DependentUpon>HeadOfTheDepartmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeacherPage.xaml.cs">
       <DependentUpon>TeacherPage.xaml</DependentUpon>

@@ -31,7 +31,6 @@ namespace University_StudentPractice.Components
         public Nullable<int> Salary { get; set; }
         public Nullable<int> Chief { get; set; }
     
-        public virtual Cathedra Cathedra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee1 { get; set; }
         public virtual Employee Employee2 { get; set; }
@@ -44,5 +43,6 @@ namespace University_StudentPractice.Components
         public virtual ICollection<HeadOfTheDepartment> HeadOfTheDepartment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teacher> Teacher { get; set; }
+        public virtual Cathedra Cathedra { get; set; }
     }
 }

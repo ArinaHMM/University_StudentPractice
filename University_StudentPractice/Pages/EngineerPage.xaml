@@ -35,7 +35,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <!-- Вставляем код из AddEmployeePage здесь -->
+           
             <!--<StackPanel VerticalAlignment="Center">
                 <TextBlock>Код:</TextBlock>
                 <TextBox Name="IdTb" Width="200"/>

@@ -18,8 +18,8 @@ namespace University_StudentPractice.Components
         public Cathedra()
         {
             this.Discipline = new HashSet<Discipline>();
-            this.Speciality = new HashSet<Speciality>();
             this.Employee = new HashSet<Employee>();
+            this.Speciality = new HashSet<Speciality>();
         }
     
         public string Code { get; set; }
@@ -30,8 +30,8 @@ namespace University_StudentPractice.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Discipline> Discipline { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Speciality> Speciality { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Speciality> Speciality { get; set; }
     }
 }

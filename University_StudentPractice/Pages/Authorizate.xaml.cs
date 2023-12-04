@@ -88,8 +88,8 @@ namespace University_StudentPractice.Pages
 
         private void OpenHeadPage()
         {
-            //OpenHeadPage openHeadPage = new OpenHeadPage();
-            //NavigationService.Navigate(openHeadPage);
+            HeadOfTheDepartmentPage headOfTheDepartment = new HeadOfTheDepartmentPage();
+            NavigationService.Navigate(headOfTheDepartment);
             //myNavigation()
 
         }

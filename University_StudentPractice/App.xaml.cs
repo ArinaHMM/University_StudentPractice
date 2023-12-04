@@ -17,9 +17,10 @@ namespace University_StudentPractice
     /// </summary>
     public partial class App : System.Windows.Application
     {
-        public static PracticeClasses222103Entities db = new PracticeClasses222103Entities();
+        public static PracticeClasses222103Entities1 db = new PracticeClasses222103Entities1();
         public static int COuntOfExams;
         public static int CountOfEmployeers;
+        public static int CountOfCathedras;
         public static EngineerPage engineerPage;
         
         public static object CurrentUser { get; internal set; }

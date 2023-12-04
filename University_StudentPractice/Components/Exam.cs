@@ -14,12 +14,6 @@ namespace University_StudentPractice.Components
     
     public partial class Exam
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Exam()
-        {
-            this.Exam_Student = new HashSet<Exam_Student>();
-        }
-    
         public int id_exam { get; set; }
         public Nullable<System.DateTime> DateOfExam { get; set; }
         public Nullable<int> idcode { get; set; }
@@ -30,8 +24,6 @@ namespace University_StudentPractice.Components
     
         public virtual Discipline Discipline { get; set; }
         public virtual Student Student { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Exam_Student> Exam_Student { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

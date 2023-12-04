@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"> 
             <TextBlock>Код:</TextBlock>
-            <TextBlock Name="IdTb" Width="200" Text="{Binding id}" IsEnabled="False" />
+            <TextBox Name="IdTb" Width="200" Text="{Binding id}" IsEnabled="False" />
             <TextBlock>Шифр:</TextBlock>
             <ComboBox Name="CodeCb" Width="200" DisplayMemberPath="Name" SelectedItem="{Binding Cathedra}" IsEnabled="True" />
 

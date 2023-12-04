@@ -39,7 +39,7 @@ namespace University_StudentPractice.Pages
 
         public void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            if(employee.id == 0)
+            if (employee.id  >=0)
                 App.db.Employee.Add(employee);
             App.db.SaveChanges();
             MessageBox.Show("Готово");
