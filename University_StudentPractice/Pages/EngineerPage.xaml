@@ -33,6 +33,18 @@
                     <Button Content="Добавить" Name="AddBtn" Width="100" Margin="0,0,10,0" Click="AddEmployeeButton_Click"/>
                     <Button Content="Удалить" Name="DeleteBtn" Width="100" Click="DeleteBtn_Click" />
                 </StackPanel>
+                <StackPanel>
+                    <StackPanel Orientation="Vertical" >
+                    
+                    <TextBlock >Поиск</TextBlock>
+                    <TextBox Margin="10"  Name="NameOfDisciplineSearchTb" Width="120" TextChanged="NameOfDisciplineSearchTb_TextChanged"></TextBox>
+                        
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Button x:Name="ExitBtn" Click="ExitBtn_Click">Выход</Button>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
 
            

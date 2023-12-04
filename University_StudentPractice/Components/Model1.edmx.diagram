@@ -4,36 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ea1b42c85c24dc59d471525e099506d" Name="Diagram1" ZoomLevel="50">
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Application" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Discipline" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Engineer" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Exam" Width="1.5" PointX="12.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Faculty" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.HeadOfTheDepartment" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Speciality" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Student" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.sysdiagrams" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Teacher" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+      <Diagram DiagramId="4defcb5b391948a6a51e97f402737466" Name="Diagram1">
+        <EntityTypeShape EntityType="PracticeClasses222103Model.AnimalsBurito" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Application" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Cathedra" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.CountriesBurito" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Discipline" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Employee" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Engineer" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Exam" Width="1.5" PointX="9.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Exam_Student" Width="1.5" PointX="12" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Faculty" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.HeadOfTheDepartment" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.PositionT" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Speciality" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Student" Width="1.5" PointX="7.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeClasses222103Model.Teacher" Width="1.5" PointX="7.5" PointY="21.5" IsExpanded="true" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Application_Discipline1" ManuallyRouted="false" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Application_Speciality1" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Cathedra_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Discipline_Cathedra" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Employee_Cathedra" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Speciality_Cathedra" ManuallyRouted="false" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Employee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Employee_PositionT" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Engineer_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_HeadOfTheDepartment_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Teacher_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Student_Exam" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Student_Student" ManuallyRouted="false" />
         <AssociationConnector Association="PracticeClasses222103Model.FK_Student_Speciality" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.CountriesBurito" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Employee" Width="1.5" PointX="5.625" PointY="8" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.PositionT" Width="1.5" PointX="3.375" PointY="6.125" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Employee_Employee" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Employee_PositionT" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Engineer_Employee" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Exam_Employee" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_HeadOfTheDepartment_Employee" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Teacher_Employee" />
-        <EntityTypeShape EntityType="PracticeClasses222103Model.Cathedra" Width="1.5" PointX="3" PointY="8.625" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Cathedra_Faculty" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Discipline_Cathedra" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Employee_Cathedra" />
-        <AssociationConnector Association="PracticeClasses222103Model.FK_Speciality_Cathedra" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,31 +25,56 @@ namespace University_StudentPractice.Pages
         public HeadOfTheDepartmentPage()
         {
             InitializeComponent();
-            DepartmentsDataGrid.ItemsSource = App.db.Cathedra.ToList();
-            DepartmentsDataGrid.DataContext = App.db.Cathedra.ToList();
-            App.CountOfCathedras = App.db.Cathedra.Count();
+            OrderCb.ItemsSource = App.db.Faculty.ToList();
+            OrderCb.DisplayMemberPath = "Name";
+            Refresh();
+        }
+
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EditDepartmentPage(DepartmentsDataGrid.SelectedItem as Cathedra));
 
         }
 
-        public void Page_Loaded(object sender, RoutedEventArgs e)
+        void Refresh()
+        {
+            DepartmentsDataGrid.ItemsSource = null;
+            IEnumerable<Cathedra> cathedras = App.db.Cathedra.ToList();
+            if (OrderCb.SelectedIndex != -1)
+            {
+                cathedras = cathedras.Where(x => x.Faculty == (OrderCb.SelectedItem as Faculty).Abbreviation);
+            }
+            DepartmentsDataGrid.ItemsSource = cathedras;
+            
+        }
+        private void OrderCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Refresh();
         }
-       public void Refresh()
+
+        private void ByTheBaseBtn_Click(object sender, RoutedEventArgs e)
         {
-           DepartmentsDataGrid.ItemsSource = App.db.Cathedra.ToList();
-            DepartmentsDataGrid.DataContext = App.db.Cathedra.ToList();
+            OrderCb.SelectedIndex = -1;
+            Refresh();
         }
 
-        private void AddDepartmentButton_Click(object sender, RoutedEventArgs e)
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EditDepartmentPage(DepartmentsDataGrid.SelectedItem as Cathedra));
+            NavigationService.Navigate(new Authorizate());
         }
 
-        private void EditDepartmentButton_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EditDepartmentPage(DepartmentsDataGrid.SelectedItem as Cathedra));
+            Refresh();
         }
     }
-    
 }
+
+
+        

@@ -29,46 +29,34 @@ namespace University_StudentPractice.Pages
         public EditDepartmentPage(Cathedra _cathedra)
         {
             InitializeComponent();
-            DataContext = _cathedra;
-            cathedra = _cathedra;
-
+            FacultyCb.ItemsSource = App.db.Faculty.ToList();
+            FacultyCb.DisplayMemberPath = "Name";
         }
 
         public void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
-            // Проверяем, что cathedra не null
-            if (cathedra == null)
+            if (FacultyCb.SelectedIndex != -1 && Nametb.Text.Length > 0)
             {
-                cathedra = new Cathedra(); // Создаем новый объект Cathedra
-            }
-
-            // Присваиваем значения полям cathedra из элементов управления
-            cathedra.Code = Codetb.Text; // Предполагаем, что у вас есть TextBox с именем Codetb
-            cathedra.Name = Nametb.Text; // Предполагаем, что у вас есть TextBox с именем NameTb
-
-            // Проверяем, что поля cathedra не null и не пусты
-            if (!string.IsNullOrWhiteSpace(cathedra.Code))
-            {
-                    if (App.db.Cathedra.Contains(cathedra))
-                    {
-                        // Если объект cathedra уже находится в базе данных, он будет автоматически обновлен
-                        App.db.SaveChanges();
-                        MessageBox.Show("Кафедра успешно обновлена.");
-                    }
-                    else
-                    {
-                        // Если объект cathedra не находится в базе данных, он будет добавлен
-                        App.db.Cathedra.Add(cathedra);
-                        App.db.SaveChanges();
-                        MessageBox.Show("Новая кафедра успешно добавлена.");
-                    }
-
-                    NavigationService.GoBack();
-                
+                string Abbreviation = "";
+                foreach (string i in Nametb.Text.Split(' '))
+                {
+                    Abbreviation += i.Substring(0, 1);
+                }
+                App.db.Cathedra.Add(new Cathedra()
+                {
+                    Code = Abbreviation.Substring(0, 1).ToUpper() + Abbreviation.Substring(1, Abbreviation.Length - 1).ToLower(),
+                    Name = Nametb.Text,
+                    Faculty = (FacultyCb.SelectedItem as Faculty).Abbreviation
+                });
+                App.db.SaveChanges();
+                MessageBox.Show("Все норм");
+                NavigationService.GoBack();
+               
             }
             else
             {
-                MessageBox.Show("Поле 'Code' не может быть пустым.");
+                MessageBox.Show("Неправильнно");
+                
             }
         }
     }

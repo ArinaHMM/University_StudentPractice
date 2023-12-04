@@ -9,11 +9,11 @@
       Title="EditDepartmentPage">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock>Код:</TextBlock>
-            <TextBox Name="Codetb" Width="200" Text="{Binding Code}"  />
+            <TextBlock>Факультет</TextBlock>
+            <ComboBox Name="FacultyCb" Width="200" Text="{Binding Cathedra.Faculty}"  />
 
             <TextBlock>Название:</TextBlock>
-            <TextBox Name="Nametb" Width="200" Text="{Binding Name}" />
+            <TextBox Name="Nametb" Width="200"  />
             <Button Width="200" Content="Сохранить изменения" Name="SaveChangesButton" Click="SaveChangesButton_Click" />
         </StackPanel>
     </Grid>

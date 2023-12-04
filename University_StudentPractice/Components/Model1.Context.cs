@@ -13,10 +13,10 @@ namespace University_StudentPractice.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PracticeClasses222103Entities1 : DbContext
+    public partial class PracticeClasses222103Entities3 : DbContext
     {
-        public PracticeClasses222103Entities1()
-            : base("name=PracticeClasses222103Entities1")
+        public PracticeClasses222103Entities3()
+            : base("name=PracticeClasses222103Entities3")
         {
         }
     
@@ -25,19 +25,21 @@ namespace University_StudentPractice.Components
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AnimalsBurito> AnimalsBurito { get; set; }
         public virtual DbSet<Application> Application { get; set; }
+        public virtual DbSet<Cathedra> Cathedra { get; set; }
+        public virtual DbSet<CountriesBurito> CountriesBurito { get; set; }
         public virtual DbSet<Discipline> Discipline { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Engineer> Engineer { get; set; }
         public virtual DbSet<Exam> Exam { get; set; }
+        public virtual DbSet<Exam_Student> Exam_Student { get; set; }
         public virtual DbSet<Faculty> Faculty { get; set; }
         public virtual DbSet<HeadOfTheDepartment> HeadOfTheDepartment { get; set; }
+        public virtual DbSet<PositionT> PositionT { get; set; }
         public virtual DbSet<Speciality> Speciality { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<CountriesBurito> CountriesBurito { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<PositionT> PositionT { get; set; }
-        public virtual DbSet<Cathedra> Cathedra { get; set; }
     }
 }

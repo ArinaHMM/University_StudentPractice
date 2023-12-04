@@ -28,8 +28,8 @@ namespace University_StudentPractice.Components
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Application> Application { get; set; }
+        public virtual Cathedra Cathedra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
-        public virtual Cathedra Cathedra { get; set; }
     }
 }

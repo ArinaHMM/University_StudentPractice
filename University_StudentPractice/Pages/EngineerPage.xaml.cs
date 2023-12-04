@@ -97,8 +97,13 @@ namespace University_StudentPractice.Pages
 
     void Refresh()
         {
-            EmployeesDataGrid.ItemsSource = App.db.Employee.ToList();
-            EmployeesDataGrid.DataContext = App.db.Employee.ToList();
+            EmployeesDataGrid.ItemsSource = null;
+            IEnumerable<Employee> empList = App.db.Employee.ToList();
+            if (NameOfDisciplineSearchTb.Text.Length > 0)
+            {
+                empList = empList.Where(x => x.LastName.ToLower().Contains(NameOfDisciplineSearchTb.Text.ToLower()));
+            }
+            EmployeesDataGrid.ItemsSource = empList;
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
@@ -146,6 +151,15 @@ namespace University_StudentPractice.Pages
             }
             MessageBox.Show("Удалено");
             Refresh();
+        }
+         private void NameOfDisciplineSearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Authorizate());
         }
     }
 }

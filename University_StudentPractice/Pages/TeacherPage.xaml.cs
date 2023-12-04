@@ -79,9 +79,26 @@ namespace University_StudentPractice.Pages
         }
         void Refresh()
         {
-            ExamsDataGrid.ItemsSource = App.db.Exam.ToList();
-            ExamsDataGrid.DataContext = App.db.Exam.ToList();
+            ExamsDataGrid.ItemsSource = null;
+            IEnumerable<Exam> exams = App.db.Exam.ToList();
+            if (AssessmentCb.SelectedIndex != -1)
+            {
+                if (AssessmentCb.SelectedIndex == 0)
+                    exams = exams.Where(x => x.Assessment == 2);
+                if (AssessmentCb.SelectedIndex == 1)
+                    exams = exams.Where(x => x.Assessment == 3);
+                if (AssessmentCb.SelectedIndex == 2)
+                    exams = exams.Where(x => x.Assessment == 4);
+                if (AssessmentCb.SelectedIndex == 3)
+                    exams = exams.Where(x => x.Assessment == 5);
+            }
+            if (NameOfDisciplineSearchTb.Text.Length > 0)
+            {
+                exams = exams.Where(x => x.Discipline.Name.ToLower().Contains(NameOfDisciplineSearchTb.Text.ToLower()));
+            }
+            ExamsDataGrid.ItemsSource = exams;
         }
+    
 
         private void GradeBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -118,6 +135,27 @@ namespace University_StudentPractice.Pages
                     Refresh();
                 }
             }
+        }
+
+        private void AssessmentCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void ToBaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AssessmentCb.SelectedIndex = -1;
+            Refresh();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Authorizate());
+        }
+
+        private void NameOfDisciplineSearchTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Refresh();
         }
     }
 }
